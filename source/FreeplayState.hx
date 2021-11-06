@@ -141,17 +141,13 @@ class FreeplayState extends MusicBeatState
 		// JUST DOIN THIS SHIT FOR TESTING!!!
 		/* 
 			var md:String = Markdown.markdownToHtml(Assets.getText('CHANGELOG.md'));
-
 			var texFel:TextField = new TextField();
 			texFel.width = FlxG.width;
 			texFel.height = FlxG.height;
 			// texFel.
 			texFel.htmlText = md;
-
 			FlxG.stage.addChild(texFel);
-
 			// scoreText.textField.htmlText = md;
-
 			trace(md);
 		 */
 
@@ -159,7 +155,7 @@ class FreeplayState extends MusicBeatState
 		textBG.alpha = 0.6;
 		add(textBG);
 		#if PRELOAD_ALL
-		var leText:String = "Press SPACE to listen to this Song / Press RESET to Reset your Score and Accuracy.";
+		var leText:String = "press your spacebar to vibe to this Song / press reset to Reset your wait this isnt even being used lmao";
 		#else
 		var leText:String = "Press RESET to Reset your Score and Accuracy.";
 		#end
@@ -184,13 +180,11 @@ class FreeplayState extends MusicBeatState
 	{
 		if (songCharacters == null)
 			songCharacters = ['bf'];
-
 		var num:Int = 0;
 		for (song in songs)
 		{
 			addSong(song, weekNum, songCharacters[num]);
 			this.songs[this.songs.length-1].color = weekColor;
-
 			if (songCharacters.length != 1)
 				num++;
 		}
@@ -234,9 +228,9 @@ class FreeplayState extends MusicBeatState
 		}
 
 		if (controls.UI_LEFT_P)
-			changeDiff(-1);
+			changeDiff(0);
 		if (controls.UI_RIGHT_P)
-			changeDiff(1);
+			changeDiff(0);
 
 		if (controls.BACK)
 		{
@@ -316,11 +310,12 @@ class FreeplayState extends MusicBeatState
 	function changeDiff(change:Int = 0)
 	{
 		curDifficulty += change;
+		curDifficulty = 2;
 
 		if (curDifficulty < 0)
-			curDifficulty = CoolUtil.difficultyStuff.length-1;
+			curDifficulty = 2;
 		if (curDifficulty >= CoolUtil.difficultyStuff.length)
-			curDifficulty = 0;
+			curDifficulty = 2;
 
 		#if !switch
 		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);

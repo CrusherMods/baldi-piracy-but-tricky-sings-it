@@ -25,13 +25,14 @@ using StringTools;
 class MainMenuState extends MusicBeatState
 {
 	public static var psychEngineVersion:String = '0.4.2'; //This is also used for Discord RPC
+	public static var modVersion:String = '1.0'; //Is this lmao
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 	private var camGame:FlxCamera;
 	private var camAchievement:FlxCamera;
 	
-	var optionShit:Array<String> = ['story_mode', 'freeplay', #if ACHIEVEMENTS_ALLOWED 'awards', #end 'credits', #if !switch 'donate', #end 'options'];
+	var optionShit:Array<String> = ['story_mode', 'credits', #if !switch 'donate', #end 'options'];
 
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
@@ -41,7 +42,7 @@ class MainMenuState extends MusicBeatState
 	{
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("In the uhhh- when do I get paid", null);
 		#end
 
 		camGame = new FlxCamera();
@@ -110,6 +111,10 @@ class MainMenuState extends MusicBeatState
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 64, 0, "Tricky x Piracy V" + modVersion, 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Friday Night Funkin' v" + Application.current.meta.get('version'), 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -119,30 +124,9 @@ class MainMenuState extends MusicBeatState
 
 		changeItem();
 
-		#if ACHIEVEMENTS_ALLOWED
-		Achievements.loadAchievements();
-		var leDate = Date.now();
-		if (leDate.getDay() == 5 && leDate.getHours() >= 18) {
-			var achieveID:Int = Achievements.getAchievementIndex('friday_night_play');
-			if(!Achievements.isAchievementUnlocked(Achievements.achievementsStuff[achieveID][2])) { //It's a friday night. WEEEEEEEEEEEEEEEEEE
-				Achievements.achievementsMap.set(Achievements.achievementsStuff[achieveID][2], true);
-				giveAchievement();
-				ClientPrefs.saveSettings();
-			}
-		}
-		#end
-
 		super.create();
 	}
 
-	#if ACHIEVEMENTS_ALLOWED
-	// Unlocks "Freaky on a Friday Night" achievement
-	function giveAchievement() {
-		add(new AchievementObject('friday_night_play', camAchievement));
-		FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
-		trace('Giving achievement "friday_night_play"');
-	}
-	#end
 
 	var selectedSomethin:Bool = false;
 
@@ -181,7 +165,10 @@ class MainMenuState extends MusicBeatState
 			{
 				if (optionShit[curSelected] == 'donate')
 				{
-					CoolUtil.browserLoad('https://ninja-muffin24.itch.io/funkin');
+					FlxG.sound.play(Paths.sound('fartsoundlol'));
+					FlxFlicker.flicker(magenta, 1.1, 0.15, false);
+					trace("poo poo poo poo lol");
+					CoolUtil.browserLoad('https://www.youtube.com/watch?v=xvFZjo5PgG0');
 				}
 				else
 				{
@@ -212,10 +199,6 @@ class MainMenuState extends MusicBeatState
 								{
 									case 'story_mode':
 										MusicBeatState.switchState(new StoryMenuState());
-									case 'freeplay':
-										MusicBeatState.switchState(new FreeplayState());
-									case 'awards':
-										MusicBeatState.switchState(new AchievementsMenuState());
 									case 'credits':
 										MusicBeatState.switchState(new CreditsState());
 									case 'options':

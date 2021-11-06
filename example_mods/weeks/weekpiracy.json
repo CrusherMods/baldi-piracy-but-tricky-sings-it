@@ -1,0 +1,25 @@
+{
+	"storyName": "Clowns Back",
+	"hideFreeplay": false,
+	"weekBackground": "piracy",
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
+	"weekCharacters": [
+		"menutricky",
+		"bf",
+		"gf"
+	],
+	"songs": [
+		[
+			"Piracy",
+			"tricky",
+			[
+				255,
+				0,
+				0
+			]
+		]
+	],
+	"hideStoryMode": false,
+	"weekName": "Week Clown"
+}

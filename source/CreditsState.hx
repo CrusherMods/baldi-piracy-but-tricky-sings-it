@@ -34,7 +34,7 @@ class CreditsState extends MusicBeatState
 	{
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("checking out the credits because I care", null);
 		#end
 
 		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
@@ -62,6 +62,16 @@ class CreditsState extends MusicBeatState
 		
 		#end
 		var pisspoop = [ //Name - Icon name - Description - Link - BG Color
+		['Team for Mod'],
+		['Crusher', 'crusher', 'Coder of the Project', 'https://twitter.com/CrusherNotDrip', '0xFF233296'],
+		['NeonFurious', 'neonfurious', 'guy who rated it 69240/10\n lol', 'https://twitter.com/Java_NotDrip', '0xFF5165F6'],
+		['CryptonCreates', 'crypton', 'Guy who made the covers', 'https://www.youtube.com/channel/UCdYPmK_AHXSW-rF4vmdX8zA', '0xFF5D0000'],
+		['Mod Owners Team'],
+		['MystMan12', 'baldi', 'Made Baldis Basic the game where baldi is from', '', '0xFF00DD3B'],
+		['Krinkles', 'hank', 'Made Madness Combat The Show where Tricky and Hank is from', '', '0xFF1C1D3B'],
+		['AdvideGEP', 'paldo', 'Made or just Submitted the Baldi Mod', '', '0xFFFF2300'],
+		['BanBuds', 'tricky', 'Voiced Paldo for Baldi and also Tricky Mod Creator\n Thats so epic', '', '0xFFFF1900'],
+
 		['Psych Engine Team'],
 		['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',					'https://twitter.com/Shadow_Mario_',	'0xFFFFDD33'],
 		['RiverOaken',			'riveroaken',		'Main Artist/Animator of Psych Engine',				'https://twitter.com/river_oaken',		'0xFFC30085'],
